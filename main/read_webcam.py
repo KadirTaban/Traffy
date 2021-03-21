@@ -1,6 +1,6 @@
 import cv2
 
-frameWidth=640
+frameWidth=540
 frameHeight=400
 
 
@@ -11,6 +11,7 @@ cap.set(4,frameHeight)
 
 while True:
     sucess,img=cap.read()
+    img=cv2.resize(img,(frameWidth,frameHeight))
     cv2.imshow("Video",img)
 
 
