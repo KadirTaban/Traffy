@@ -18,6 +18,6 @@ imgErosed = cv2.erode(imgDilation,kernel,iterations= 1)
 #cv2.imshow("imgBlur",imgBlur)
 cv2.imshow("img canny",imgCanny)
 cv2.imshow("img dilation",imgDilation)
-cv2.imshow("img erosed",imgEroded)
+cv2.imshow("img erosed",imgErosed)
 
 cv2.waitKey(0)
