@@ -12,6 +12,7 @@ imgOutput=cv2.warpPerspective(img,matrix,(width,height))
 
 
 for x in range(0,4):
+
     cv2.circle(img,(pts1[x][0],pts1[x][1]),5,(0,0,255),cv2.FILLED)
 
 
