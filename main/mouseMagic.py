@@ -1,32 +1,30 @@
 import cv2
 import numpy as np
 
+circles = np.zeros((4,2),np.int)
+counter= 0
+
 def mousePoints(event,x,y,flags,params):
+    global counter
     if event == cv2.EVENT_LBUTTONDOWN:
-        print(x,y)
-
-img = cv2.imread("Resources/iskambil.jpg")
-cv2.imshow("Original image", img)
-cv2.setMouseCallback("Original image", mousePoints)
-
-cv2.waitKey(0)
-
-img= cv2.imread("Resources/iskambil.jpg")
-
-width, height= 450,550
-
-pts1 = np.float32([[134,194],[243,224],[129,339],[245,355]])
-pts2= np.float32([[0,0],[450,0],[0,550],[450,550]])
-matrix= cv2.getPerspectiveTransform(pts1,pts2)#ex:https://pysource.com/2018/02/14/perspective-transformation-opencv-3-4-with-python-3-tutorial-13/
-imgOutput=cv2.warpPerspective(img,matrix,(width,height))
+        circles[counter]=x,y
+        counter=counter+1
+        print(circles)
 
 
-for x in range(0,4):
+img= cv2.imread("Resources/road.jpg")
+while True:
+    if counter == 4:
+        width, height = 250,350
+        pts1 = np.float32([circles[0],circles[1],circles[2],circles[3]])
+        pts2 = np.float32([[0,0],[width,0],[0,height],[width,height]])
+        matrix = cv2.getPerspectiveTransform(pts1,pts2)
+        imgOutput = cv2.warpPerspective(img,matrix,(width,height))
+        cv2.imshow("Output Image ", imgOutput)
+    for x in range(0,4):
+        cv2.circle(img,(circles[x][0],circles[x][1]),4,(0,255,0),cv2.FILLED)
 
+    cv2.imshow("Original image", img)
+    cv2.setMouseCallback("Original image", mousePoints)
 
-    cv2.circle(img,(pts1[x][0],pts1[x][1]),15,(0,255,0),cv2.FILLED)
-
-
-cv2.imshow("Original Image",img)
-cv2.imshow("Output Image",imgOutput)
-cv2.waitKey(0)
+    cv2.waitKey(1)
