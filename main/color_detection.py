@@ -3,9 +3,9 @@ import numpy as np
 
 ############################################
 cap = cv2.VideoCapture(0)
-path = 'test.png'
+path = 'road.jpg'
 ############################################
-
+#hue=ton
 def empty(a):
     pass
 
