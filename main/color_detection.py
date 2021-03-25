@@ -1,10 +1,9 @@
 import cv2
 import numpy as np
 
-############################################
 cap = cv2.VideoCapture(0)
-path = 'road.jpg'
-############################################
+#path = 'road.jpg'
+
 #hue=ton
 def empty(a):
     pass
@@ -22,8 +21,7 @@ def stackImages(scale, imgArray):
                 if imgArray[x][y].shape[:2] == imgArray[0][0].shape[:2]:
                     imgArray[x][y] = cv2.resize(imgArray[x][y], (0, 0), None, scale, scale)
                 else:
-                    imgArray[x][y] = cv2.resize(imgArray[x][y], (imgArray[0][0].shape[1], imgArray[0][0].shape[0]),
-                                                None, scale, scale)
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (imgArray[0][0].shape[1], imgArray[0][0].shape[0]),None, scale, scale)
                 if len(imgArray[x][y].shape) == 2: imgArray[x][y] = cv2.cvtColor(imgArray[x][y], cv2.COLOR_GRAY2BGR)
         imageBlank = np.zeros((height, width, 3), np.uint8)
         hor = [imageBlank] * rows
