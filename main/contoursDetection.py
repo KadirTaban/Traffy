@@ -14,7 +14,7 @@ cv2.namedWindow("Parameters")
 cv2.resizeWindow("Parameters",640,240)
 cv2.createTrackbar("Threshold1","Parameters",23,255,empty)
 cv2.createTrackbar("Threshold2","Parameters",20,255,empty)
-
+cv2.createTrackbar("Area","Parameters",5000,30000,empty)
 
 def stackImages(scale, imgArray):
     rows = len(imgArray)
@@ -58,7 +58,18 @@ def getContours(img,imgContour):
             cv2.drawContours(imgContour, contours, -1, (255, 0, 255), 7)
             peri = cv2.arcLength(cnt,True)
             approx = cv2.approxPolyDP(cnt,0.02*peri, True)
-            print(approx)
+            print(len(approx))
+            x,y,w,h = cv2.boundingRect(approx)
+            cv2.rectangle(imgContour,(x,y),(x+w,y+h), (0,255,0),5)
+
+            cv2.putText(imgContour,"Points:"+str(len(approx)),(x+w+20,y+20),cv2.FONT_HERSHEY_COMPLEX, .7,
+                        (0,255,0),2)
+            cv2.putText(imgContour,"Area: "+str(int(area)),(x+w+20, y+45),cv2.FONT_HERSHEY_COMPLEX,0.7,
+                        (0,255,0),2)
+
+
+
+
 
 while True:
     success, img = cap.read()
