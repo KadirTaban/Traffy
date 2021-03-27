@@ -29,9 +29,6 @@ cv2.createTrackbar("Min Area","Result",0,100000,empty)
 cascade = cv2.CascadeClassifier(path)
 
 while True:
-    # SET CAMERA BRIGHTNESS FROM TRACKBAR VALUE
-    cameraBrightness = cv2.getTrackbarPos("Brightness", "Result")
-    cap.set(10, cameraBrightness)
     # GET CAMERA IMAGE AND CONVERT TO GRAYSCALE
     success, img = cap.read()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
