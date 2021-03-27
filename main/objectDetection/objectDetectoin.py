@@ -23,7 +23,7 @@ cv2.resizeWindow("Result",frameWidth,frameHeight+100)
 cv2.createTrackbar("Scale","Result",400,1000,empty)
 cv2.createTrackbar("Neig","Result",8,50,empty)
 cv2.createTrackbar("Min Area","Result",0,100000,empty)
-cv2.createTrackbar("Brightness","Result",180,255,empty)
+
 
 # LOAD THE CLASSIFIERS DOWNLOADED
 cascade = cv2.CascadeClassifier(path)
