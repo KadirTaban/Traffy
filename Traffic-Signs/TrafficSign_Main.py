@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pylot as plt
+import matplotlib.pyplot as plt
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.optimizers import Adam
