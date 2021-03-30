@@ -57,10 +57,10 @@ print("Validation",end="");print(X_validation,y_validation.shape)
 print("Test",end="");print(X_test,y_test.shape)
 assert(X_train.shape[0] == y_train.shape[0]),"The number of images in not equal to the number of lables in training set"
 assert(X_validation.shape[0] == y_validation.shape[0]),"The number of images in not equal to the number of lables in validation set"
-assert(X_test.shape[0] ==y_test.shape[0]),"The number of images in not equal to the number of lables in the test set"
-assert(X_train.shape[1:]==(imageDimesions)),"The dimensions of the Training images are wrong"
-assert(X_validation.shape[1:] ==(imageDimesions)),"The dimesions of the Validation images are wrong"
-assert(X_test.shape[1:]==(imageDimesions)),"The dimensions of the Test images are wrong"
+assert(X_test.shape[0] == y_test.shape[0]),"The number of images in not equal to the number of lables in the test set"
+assert(X_train.shape[1:] == (imageDimesions)),"The dimensions of the Training images are wrong"
+assert(X_validation.shape[1:] == (imageDimesions)),"The dimesions of the Validation images are wrong"
+assert(X_test.shape[1:] == (imageDimesions)),"The dimensions of the Test images are wrong"
 
 
 data=pd.read_csv(labelFile)
