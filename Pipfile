@@ -8,6 +8,8 @@ pipenv = "*"
 opencv-python = "*"
 numpy = "*"
 coverage = "*"
+keras-applications = "*"
+keras-preprocessing = "*"
 
 [dev-packages]
 
