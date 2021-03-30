@@ -14,19 +14,19 @@ import pandas as pd
 import random
 from keras.preprocessing.image import ImageDataGenerator
 
-
-path="myData"
-labelFile='labels.csv'
-batch_size_val=10
+#Parameters#
+path="myData"#folder with all class folders
+labelFile='labels.csv'#file with all names of classes
+batch_size_val=10 #how many process together
 steps_per_epoch_val=200
-epochs_val=10
+epochs_val=4
 imageDimesions=(32,32,3)
-testRatio=0.2
-validationRatio=0.2
+testRatio=0.2 #if 1000 images split will 200 for testing
+validationRatio=0.2 #if 1000 images 20% of remaining 800 will be 160 for validation
 
-
+#importing of the images
 count = 0
-images=[]
+images =[]
 classNo=[]
 myList=os.listdir(path)
 print("Total Classes Detected:",len(myList))
@@ -45,12 +45,15 @@ print(" ")
 images = np.array(images)
 classNo= np.array(classNo)
 
+#split data#
+
 X_train , X_test,y_train, y_test = train_test_split(images,classNo, test_size = testRatio)
 X_train , X_validation,y_train, y_validation = train_test_split(X_train, y_train, test_size=validationRatio)
 
 #x_train = Array for ımages to train
 #x_Test= Corresponding Class ıd
 
+### TO CHECK IF NUMBER OF IMAGES MATCHES TO NUMBER OF LABELS FOR EACH DATA SET
 print("DATA SHAPES")
 print("Train",end="");print(X_train.shape,y_train.shape)
 print("Validation",end="");print(X_validation,y_validation.shape)
@@ -62,13 +65,10 @@ assert(X_train.shape[1:] == (imageDimesions)),"The dimensions of the Training im
 assert(X_validation.shape[1:] == (imageDimesions)),"The dimesions of the Validation images are wrong"
 assert(X_test.shape[1:] == (imageDimesions)),"The dimensions of the Test images are wrong"
 
-
+###READ CSV FILE
 data=pd.read_csv(labelFile)
 print("data shape",data.shape,type(data))
-
-
-
-
+## DISPLAY SOME SAMPLES IMAGES OF ALL THE CLASSES
 num_of_samples=[]
 cols=5
 num_classes= noOfClasses
@@ -85,7 +85,7 @@ for i in range(cols):
 
 
 
-
+### DISPLAY A BAR CHART SHOWING NO OF SAMPLES FOR EACH CATEGORY
 print(num_of_samples)
 plt.figure(figsize = (12,4))
 plt.bar(range(0, num_classes),num_of_samples)
@@ -94,6 +94,7 @@ plt.xlable("Class number")
 plt.ylable("Number of images")
 plt.show()
 
+### PREPROCESSING THE IMAGES
 def grayscale(img):
      img =cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
      return img
