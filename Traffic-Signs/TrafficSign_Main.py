@@ -111,7 +111,7 @@ def preprocessing(img):
 X_train=np.array(list(map(preprocessing,X_train)))
 X_validation=np.array(list(map(preprocessing,X_validation)))
 X_test=np.array(list(map(preprocessing,X_test)))
-cv2.imshow("GrayScale Images",X_train[random.randint(0,len(x_train)-1)])
+cv2.imshow("GrayScale Images",X_train[random.randint(0,len(x_train)-1)])#TO CHECK IF THE TRAINING IS DONE PROPERLY
 
 
 
