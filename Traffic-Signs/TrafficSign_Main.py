@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense
-from tensorflow.python.keras.optimizers import Adam
 from tensorflow.python.keras.utils.np_utils import to_categorical
 from tensorflow.python.keras.layers import Dropout,Flatten
 from tensorflow.python.keras.layers.convolutional import Conv2D, MaxPooling2D
@@ -12,8 +11,10 @@ import pickle
 import os
 import pandas as pd
 import random
-from keras.preprocessing.image import ImageDataGenerator
-
+from tensorflow.python.keras.preprocessing.image import ImageDataGenerator
+import tensorflow as tf
+optim = tf.keras.optimizers.Adam()
+from tensorflow.python.keras.optimizers import *
 #Parameters#
 path="myData"#folder with all class folders
 labelFile='labels.csv'#file with all names of classes
@@ -38,7 +39,7 @@ for x in range(0,len(myList)):
         curImg = cv2.imread(path+"/"+str(count)+"/"+y)
         images.append(curImg)
         classNo.append(count)
-    print(count,end="  ")
+    print(count,end=" ")
     count+=1
 
 print(" ")
@@ -111,13 +112,13 @@ def preprocessing(img):
 X_train=np.array(list(map(preprocessing,X_train)))
 X_validation=np.array(list(map(preprocessing,X_validation)))
 X_test=np.array(list(map(preprocessing,X_test)))
-cv2.imshow("GrayScale Images",X_train[random.randint(0,len(x_train)-1)])#TO CHECK IF THE TRAINING IS DONE PROPERLY
+cv2.imshow("GrayScale Images",X_train[random.randint(0,len(X_train)-1)])#TO CHECK IF THE TRAINING IS DONE PROPERLY
 
 
 
-X_train=X_train.reshape(X_train.shape[0],X_train.shape[1],X_train.shape[2])
-X_validation=X_validation.reshape(X_validation[0],X_validation.shape[1](X_validation.shape[2])
-X_test=X_test.reshape(X_test.reshape(0),X_test.shape[1],X_test[2])
+X_train=X_train.reshape(X_train.shape[0],X_train.shape[1],X_train.shape[2],1)
+X_validation=X_validation.reshape(X_validation[0],X_validation.shape[1],X_validation.shape[2],1)
+X_test=X_test.reshape(X_test.reshape(0),X_test.shape[1],X_test[2],1)
 
 
 
@@ -135,7 +136,7 @@ fix,axs=plt.subplots(1,15,figsize = (20,5))
 fig.tight_layout()
 
 for i in range(15):
-    axs[i].imshow(X_batch[i].reshape(imageDimensions[0],imageDimesions[1]))
+    axs[i].imshow(X_batch[i].reshape(imageDimesions[0],imageDimesions[1]))
     axs[i].axis('off')
 
 plt.show()
