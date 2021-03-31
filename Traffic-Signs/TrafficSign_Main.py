@@ -18,7 +18,7 @@ from tensorflow.python.keras.optimizers import *
 #Parameters#
 path="myData"#folder with all class folders
 labelFile='labels.csv'#file with all names of classes
-batch_size_val=10 #how many process together
+batch_size_val=56 #how many process together
 steps_per_epoch_val=200
 epochs_val=4
 imageDimesions=(32,32,3)
