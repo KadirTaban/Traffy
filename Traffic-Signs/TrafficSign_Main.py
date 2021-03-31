@@ -38,7 +38,7 @@ for x in range(0,len(myList)):
         curImg = cv2.imread(path+"/"+str(count)+"/"+y)
         images.append(curImg)
         classNo.append(count)
-    print(count,end=" ")
+    print(count,end="  ")
     count+=1
 
 print(" ")
