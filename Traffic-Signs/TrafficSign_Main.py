@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.optimizers import Adam
-from keras.utils.np_utils import to_categorical
-from keras.layers import Dropout,Flatten
-from keras.layers.convolutional import Conv2D, MaxPooling2D
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense
+from tensorflow.python.keras.optimizers import Adam
+from tensorflow.python.keras.utils.np_utils import to_categorical
+from tensorflow.python.keras.layers import Dropout,Flatten
+from tensorflow.python.keras.layers.convolutional import Conv2D, MaxPooling2D
 import cv2
 from sklearn.model_selection import train_test_split
 import pickle
@@ -115,9 +115,9 @@ cv2.imshow("GrayScale Images",X_train[random.randint(0,len(x_train)-1)])#TO CHEC
 
 
 
-X_train=X_train.reshape(X_train.shape[0],X_train.shape[1],X_train.shape[2],1)
-X_validation=X_validation.reshape(X_validation[0],X_validation.shape[1],x_validation.shape[2],1)
-X_test=X_test.reshape(X_test.reshape(0),X_test.shape[1],X_test[2],1)
+X_train=X_train.reshape(X_train.shape[0],X_train.shape[1],X_train.shape[2])
+X_validation=X_validation.reshape(X_validation[0],X_validation.shape[1](X_validation.shape[2])
+X_test=X_test.reshape(X_test.reshape(0),X_test.shape[1],X_test[2])
 
 
 
