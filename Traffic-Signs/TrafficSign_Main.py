@@ -19,8 +19,8 @@ from tensorflow.python.keras.optimizers import *
 path="myData"#folder with all class folders
 labelFile='labels.csv'#file with all names of classes
 batch_size_val=56 #how many process together
-steps_per_epoch_val=200
-epochs_val=4
+steps_per_epoch_val=2000
+epochs_val=10
 imageDimesions=(32,32,3)
 testRatio=0.2 #if 1000 images split will 200 for testing
 validationRatio=0.2 #if 1000 images 20% of remaining 800 will be 160 for validation
@@ -48,8 +48,8 @@ classNo= np.array(classNo)
 
 #split data#
 
-X_train , X_test,y_train, y_test = train_test_split(images,classNo, test_size = testRatio)
-X_train , X_validation,y_train, y_validation = train_test_split(X_train, y_train, test_size=validationRatio)
+X_train , X_test, y_train, y_test = train_test_split(images,classNo, test_size = testRatio)
+X_train , X_validation, y_train, y_validation = train_test_split(X_train, y_train, test_size=validationRatio)
 
 #x_train = Array for ımages to train
 #x_Test= Corresponding Class ıd
@@ -57,8 +57,8 @@ X_train , X_validation,y_train, y_validation = train_test_split(X_train, y_train
 ### TO CHECK IF NUMBER OF IMAGES MATCHES TO NUMBER OF LABELS FOR EACH DATA SET
 print("DATA SHAPES")
 print("Train",end="");print(X_train.shape,y_train.shape)
-print("Validation",end="");print(X_validation,y_validation.shape)
-print("Test",end="");print(X_test,y_test.shape)
+print("Validation",end="");print(X_validation.shape,y_validation.shape)
+print("Test",end="");print(X_test.shape,y_test.shape)
 assert(X_train.shape[0] == y_train.shape[0]),"The number of images in not equal to the number of lables in training set"
 assert(X_validation.shape[0] == y_validation.shape[0]),"The number of images in not equal to the number of lables in validation set"
 assert(X_test.shape[0] == y_test.shape[0]),"The number of images in not equal to the number of lables in the test set"
