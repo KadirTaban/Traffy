@@ -21,7 +21,7 @@ labelFile='labels.csv'#file with all names of classes
 batch_size_val=56 #how many process together
 steps_per_epoch_val=2000
 epochs_val=10
-imageDimesions=(32,32,3)
+imageDimensions=(32, 32, 3)
 testRatio=0.2 #if 1000 images split will 200 for testing
 validationRatio=0.2 #if 1000 images 20% of remaining 800 will be 160 for validation
 
@@ -49,24 +49,22 @@ classNo= np.array(classNo)
 #split data#
 
 X_train , X_test, y_train, y_test = train_test_split(images,classNo, test_size = testRatio)
+
 X_train , X_validation, y_train, y_validation = train_test_split(X_train, y_train, test_size=validationRatio)
 
 #x_train = Array for ımages to train
 #x_Test= Corresponding Class ıd
 
-### TO CHECK IF NUMBER OF IMAGES MATCHES TO NUMBER OF LABELS FOR EACH DATA SET
+### TO CHECK IF NUMBER OF IMAGES MATCHES TO NUMBER OF LABELS FOR EACH DATA SET#
 print("DATA SHAPES")
 print("Train",end="");print(X_train.shape,y_train.shape)
 print("Validation",end="");print(X_validation.shape,y_validation.shape)
 print("Test",end="");print(X_test.shape,y_test.shape)
-assert(X_train.shape[0] == y_train.shape[0]),"The number of images in not equal to the number of lables in training set"
-assert(X_validation.shape[0] == y_validation.shape[0]),"The number of images in not equal to the number of lables in validation set"
-assert(X_test.shape[0] == y_test.shape[0]),"The number of images in not equal to the number of lables in the test set"
-assert(X_train.shape[1:] == (imageDimesions)),"The dimensions of the Training images are wrong"
-assert(X_validation.shape[1:] == (imageDimesions)),"The dimesions of the Validation images are wrong"
-assert(X_test.shape[1:] == (imageDimesions)),"The dimensions of the Test images are wrong"
+assert(X_train.shape[0] == y_train.shape[0]),"The number of images in not equal to the number of labels in training set"
+assert(X_validation.shape[0] == y_validation.shape[0]),"The number of images in not equal to the number of labels in validation set"
+assert(X_test.shape[0] == y_test.shape[0]),"The number of images in not equal to the number of labels in the test set"
 
-###READ CSV FILE
+###READ CSV FILE#
 data=pd.read_csv(labelFile)
 print("data shape",data.shape,type(data))
 ## DISPLAY SOME SAMPLES IMAGES OF ALL THE CLASSES
@@ -91,8 +89,8 @@ print(num_of_samples)
 plt.figure(figsize = (12,4))
 plt.bar(range(0, num_classes),num_of_samples)
 plt.title("Distribution of the training dataset")
-plt.xlable("Class number")
-plt.ylable("Number of images")
+plt.xlabel("Class number")
+plt.ylabel("Number of images")
 plt.show()
 
 ### PREPROCESSING THE IMAGES
@@ -113,8 +111,6 @@ X_train=np.array(list(map(preprocessing,X_train)))
 X_validation=np.array(list(map(preprocessing,X_validation)))
 X_test=np.array(list(map(preprocessing,X_test)))
 cv2.imshow("GrayScale Images",X_train[random.randint(0,len(X_train)-1)])#TO CHECK IF THE TRAINING IS DONE PROPERLY
-
-
 
 X_train=X_train.reshape(X_train.shape[0],X_train.shape[1],X_train.shape[2],1)
 X_validation=X_validation.reshape(X_validation[0],X_validation.shape[1],X_validation.shape[2],1)
