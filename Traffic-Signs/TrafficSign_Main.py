@@ -80,7 +80,7 @@ fig,axs = plt.subplots(nrows=num_classes,ncols=cols, figsize=(5,300))
 fig.tight_layout()
 for i in range(cols):
     for j,row in data.iterrows():
-        x_selected = X_train[y_train==j]
+        x_selected = X_train[y_train == j]
         axs[j][i].imshow(x_selected[random.randint(0,len(x_selected)-1), :, :], cmap=plt.get_cmap("gray"))
         axs[j][i].axis("off")
         if i ==2:
