@@ -55,7 +55,7 @@ X_train , X_test, y_train, y_test = train_test_split(images,classNo, test_size =
 
 X_train , X_validation, y_train, y_validation = train_test_split(X_train, y_train, test_size=validationRatio)
 
-#x_train = Array for ımages to train
+#x_train = Array for images to train
 #x_Test= Corresponding Class ıd
 
 ### TO CHECK IF NUMBER OF IMAGES MATCHES TO NUMBER OF LABELS FOR EACH DATA SET#
