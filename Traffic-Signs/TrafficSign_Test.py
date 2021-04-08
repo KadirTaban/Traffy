@@ -31,11 +31,18 @@ def preprocessing(img):
     return img
 
 def getClassname(classNo):
-    if classNo==0:return"Speed limit(80km/h)"
-    elif classNo==1:return "No Passing"
-    elif classNo == 2:return "Stop"
-    elif classNo== 3:return "Yield"
-
+    if classNo==0:return"Speed limit (20km/h)"
+    elif classNo==1:return "Speed limit (30km/h)"
+    elif classNo == 2:return "Speed limit (50km/h)"
+    elif classNo== 3:return "Speed limit (60km/h)"
+    elif classNo == 4: return "Speed limit (70km/h)"
+    elif classNo == 5: return "Speed limit (70km/h)"
+    elif classNo == 6: return "Speed limit (70km/h)"
+    elif classNo == 7: return "Speed limit (70km/h)"
+    elif classNo == 8: return "Speed limit (70km/h)"
+    elif classNo == 9: return "Speed limit (70km/h)"
+    elif classNo == 10: return "Speed limit (70km/h)"
+    elif classNo == 11: return "Speed limit (70km/h)"
 
 while True:
     #Read Image

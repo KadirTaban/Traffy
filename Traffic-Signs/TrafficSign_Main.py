@@ -1,6 +1,7 @@
 from typing import Tuple, List
 import numpy as np
 import matplotlib.pyplot as plt
+from numpy.core._multiarray_umath import ndarray
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense
 from tensorflow.python.keras.utils.np_utils import to_categorical
@@ -22,7 +23,7 @@ labelFile='labels.csv'#file with all names of classes
 batch_size_val=50 #how many process together
 steps_per_epoch_val=2000
 epochs_val=30
-imageDimensions=(32,32,3)
+imageDimensions= (32, 32, 3)
 testRatio=0.2 #if 1000 images split will 200 for testing
 validationRatio=0.2 #if 1000 images 20% of remaining 800 will be 160 for validation
 
@@ -44,7 +45,7 @@ for x in range(0,len(myList)):
     count+=1
 
 print(" ")
-images = np.array(images)
+images = np.array(np.array(images))
 classNo= np.array(classNo)
 
 #split data#
@@ -64,7 +65,7 @@ print("Test",end="");print(X_test.shape,y_test.shape)
 assert(X_train.shape[0] == y_train.shape[0]),"The number of images in not equal to the number of labels in training set"
 assert(X_validation.shape[0] == y_validation.shape[0]),"The number of images in not equal to the number of labels in validation set"
 assert(X_test.shape[0] == y_test.shape[0]),"The number of images in not equal to the number of labels in the test set"
-assert(X_train.shape[1:] == imageDimensions),'The dimensions of the Training images are wrong'
+assert(X_train.shape[1:] == imageDimensions),"The dimensions of the Training images are wrong"
 assert(X_validation.shape[1:] == imageDimensions),"The dimensions of the Validation images are wrong"
 assert(X_test.shape[1:] == imageDimensions),"The dimensions of the Test images are wrong"
 ###READ CSV FILE#
