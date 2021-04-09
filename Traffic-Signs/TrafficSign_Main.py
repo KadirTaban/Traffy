@@ -1,7 +1,7 @@
 from typing import Tuple, List
 import numpy as np
 import matplotlib.pyplot as plt
-from numpy.core._multiarray_umath import ndarray
+from numpy.core.multiarray import ndarray
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense
 from tensorflow.python.keras.utils.np_utils import to_categorical
