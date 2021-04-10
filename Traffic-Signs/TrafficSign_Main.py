@@ -74,7 +74,7 @@ print("data shape",data.shape,type(data))
 ## DISPLAY SOME SAMPLES IMAGES OF ALL THE CLASSES
 num_of_samples=[]
 cols=5
-num_classes= noOfClasses
+num_classes = noOfClasses
 fig,axs = plt.subplots(nrows=num_classes,ncols=cols, figsize=(5,300))
 fig.tight_layout()
 for i in range(cols):
@@ -175,7 +175,7 @@ def myModel():
 
 model=myModel()
 print(model.summary())
-history=model.fit_generator(dataGen.flow(X_train,y_train,batch_size=batch_size_val),steps_per_epoch_val=steps_per_epoch_val,epochs=epochs_val,validation_data=(X_validation))
+history=model.fit_generator(dataGen.flow(X_train,y_train,batch_size=batch_size_val),steps_per_epochs_val=steps_per_epoch_val,epochs=epochs_val,validation_data=(X_validation))
 
 plt.figure(1)
 plt.plot(history.history['loss'])
@@ -196,6 +196,6 @@ print('Test Score:',score[0])
 print('Test Accuracy:',score[1])
 
 pickle_out=open("model_trained.p","wb")
-pickle.dump(model.pickle_out)
+pickle.dumps(model.pickle_out)
 pickle_out.close()
 cv2.waitKey(0)
