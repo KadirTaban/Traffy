@@ -15,15 +15,18 @@ import pandas as pd
 import random
 from tensorflow.python.keras.preprocessing.image import ImageDataGenerator
 import tensorflow as tf
+import warnings
 optim = tf.keras.optimizers.Adam()
 from tensorflow.python.keras.optimizers import *
+warnings.simplefilter("error", np.VisibleDeprecationWarning)
+
 #Parameters#
 path="myData"#folder with all class folders
 labelFile='labels.csv'#file with all names of classes
 batch_size_val=50 #how many process together
 steps_per_epoch_val=2000
 epochs_val=30
-imageDimensions= (32, 32, 3)
+imageDimensions= (480, 480, 3)
 testRatio=0.2 #if 1000 images split will 200 for testing
 validationRatio=0.2 #if 1000 images 20% of remaining 800 will be 160 for validation
 
@@ -45,7 +48,7 @@ for x in range(0,len(myList)):
     count+=1
 
 print(" ")
-images = np.array(np.array(images))
+images = ndarray(images)
 classNo= np.array(classNo)
 
 #split data#
@@ -97,7 +100,7 @@ plt.xlabel("Class number")
 plt.ylabel("Number of images")
 plt.show()
 
-### PREPROCESSING THE IMAGES
+### PREPROCESSING THE IMAGES****
 def grayscale(img):
      img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
      return img
@@ -175,7 +178,7 @@ def myModel():
 
 model=myModel()
 print(model.summary())
-history=model.fit_generator(dataGen.flow(X_train,y_train,batch_size=batch_size_val),steps_per_epochs_val=steps_per_epoch_val,epochs=epochs_val,validation_data=(X_validation))
+history=model.fit_generator(dataGen.flow(X_train,y_train,batch_size=batch_size_val),steps_per_epoch_val=steps_per_epoch_val,epochs=epochs_val,validation_data=(X_validation))
 
 plt.figure(1)
 plt.plot(history.history['loss'])
