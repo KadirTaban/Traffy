@@ -48,7 +48,7 @@ for x in range(0,len(myList)):
     count+=1
 
 print(" ")
-images = ndarray(images)
+images = np.ndarray(images)
 classNo= np.array(classNo)
 
 #split data#

@@ -14,6 +14,7 @@ def mousePoints(event,x,y,flags,params):
 
 img= cv2.imread("Resources/road.jpg")
 while True:
+    #output is your touches
     if counter == 4:
         width, height = 250,350
         pts1 = np.float32([circles[0],circles[1],circles[2],circles[3]])
