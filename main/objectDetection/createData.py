@@ -1,11 +1,11 @@
 import cv2
 import os
 import time
-
+#created the cup of haarcascade
 #####################################################
 
 myPath = 'data/images'
-cameraNo = "http://192.168.1.117:4747/video"
+cameraNo = "http://192.168.1.117:4747/video"#DroidCam (Android app)
 cameraBrightness = 180
 moduleVal = 10  # SAVE EVERY ITH FRAME TO AVOID REPETITION
 minBlur = 500  # SMALLER VALUE MEANS MORE BLURRINESS PRESENT
