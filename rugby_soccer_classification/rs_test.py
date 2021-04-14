@@ -40,12 +40,12 @@ def get_data(data_dir):
 
 
 
-x_train = get_data("/home/mountainlabs/OpenCV-basics/rugby_soccer_classification/input/train")
+train = get_data("/home/mountainlabs/OpenCV-basics/rugby_soccer_classification/input/train")
 validation= get_data("/home/mountainlabs/OpenCV-basics/rugby_soccer_classification/input/test")
 
 l=[]
 
-for i in x_train:
+for i in train:
     if(i[1] == 0):
         l.append("rugby")
     else:
@@ -54,5 +54,8 @@ for i in x_train:
 #sns.set_style('darkgrid')
 #sns.countplot(l)
 plt.plot(l)
-plt.style.use('darkgrid')
+plt.style.use(['seaborn'])
+plt.figure(figsize = (5,5))
+plt.imshow(train[1][0])
+plt.title(labels[train[0][1]])
 plt.show()
