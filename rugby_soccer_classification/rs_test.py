@@ -1,6 +1,8 @@
+from typing import Union
+
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from matplotlib.pyplot import plot
 from tensorflow import keras
 
 from tensorflow.keras.models import Sequential
@@ -9,7 +11,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import classification_report,confusion_matrix
 import tensorflow as tf
-
+from pathlib import Path
 import cv2
 import os
 import numpy as np
@@ -19,28 +21,27 @@ labels=['rugby','soccer']
 
 img_size = 224
 
-def get_data(data_dir) -> object:#Directory path to use when loading key files
-    """
-
-    :rtype: object
-    """
-    data=[]
+labels = ['rugby', 'soccer']
+img_size = 224
+def get_data(data_dir):
+    data = []
     for label in labels:
-        path = os.path.join(data_dir,label)
-        class_num=labels.index(label)
-
+        path = os.path.join(data_dir, label)
+        class_num = labels.index(label)
         for img in os.listdir(path):
             try:
-                img_arr=cv2.imread(os.path.join(path,img))[...,::-1]#convert BGR to RGB format
-                resized_arr=cv2.resize(img_arr,(img_size,img_size))#Reshaping images to preferred size
+                img_arr = cv2.imread(os.path.join(path, img))[...,::-1] #convert BGR to RGB format
+                resized_arr = cv2.resize(img_arr, (img_size, img_size)) # Reshaping images to preferred size
                 data.append([resized_arr, class_num])
-            except Exception as e :
+            except Exception as e:
                 print(e)
+    #return np.asarray(data,dtype=np.float64)
+    return np.array(data,list)
 
-    return np.ndarray(object,data)
 
-x_train= get_data('/home/mountainlabs/OpenCV-basics/rugby_soccer_classification/input/train')
-validation= get_data('/home/mountainlabs/OpenCV-basics/rugby_soccer_classification/input/test')
+
+x_train = get_data("/home/mountainlabs/OpenCV-basics/rugby_soccer_classification/input/train")
+validation= get_data("/home/mountainlabs/OpenCV-basics/rugby_soccer_classification/input/test")
 
 l=[]
 
@@ -50,5 +51,8 @@ for i in x_train:
     else:
         l.append("soccer")
 
-sns.set_style('darkgrid')
-sns.countplot(l)
+#sns.set_style('darkgrid')
+#sns.countplot(l)
+plt.plot(l)
+plt.style.use('darkgrid')
+plt.show()
