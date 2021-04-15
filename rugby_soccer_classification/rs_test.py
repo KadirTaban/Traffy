@@ -55,7 +55,11 @@ for i in train:
 #sns.countplot(l)
 plt.plot(l)
 plt.style.use(['seaborn'])
+#plt.figure(figsize = (5,5))
+#plt.imshow(train[1][0])
+#plt.title(labels[train[0][1]])
 plt.figure(figsize = (5,5))
-plt.imshow(train[1][0])
-plt.title(labels[train[0][1]])
+plt.imshow(train[-1][0])
+plt.title(labels[train[-1][1]])
+
 plt.show()
