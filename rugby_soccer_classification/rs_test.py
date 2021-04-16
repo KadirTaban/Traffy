@@ -39,10 +39,11 @@ def get_data(data_dir):
     return np.array(data,list)
 
 
-
+## we can easily fetch our train and validation data
 train = get_data("/home/mountainlabs/OpenCV-basics/rugby_soccer_classification/input/train")
 validation= get_data("/home/mountainlabs/OpenCV-basics/rugby_soccer_classification/input/test")
 
+#visualize the data
 l=[]
 
 for i in train:
@@ -53,13 +54,34 @@ for i in train:
 
 #sns.set_style('darkgrid')
 #sns.countplot(l)
-plt.plot(l)
-plt.style.use(['seaborn'])
+##plt.plot(l)
+##plt.style.use(['seaborn'])
 #plt.figure(figsize = (5,5))
 #plt.imshow(train[1][0])
 #plt.title(labels[train[0][1]])
-plt.figure(figsize = (5,5))
-plt.imshow(train[-1][0])
-plt.title(labels[train[-1][1]])
+#plt.figure(figsize = (5,5))
+#plt.imshow(train[-1][0])
+##plt.title(labels[train[-1][1]])
 
-plt.show()
+##plt.show()
+
+x_train= []
+y_train= []
+x_val= []
+y_val= []
+
+for feature, label in train :
+    x_train.append(feature)
+    y_train.append(label)
+
+for feature, label in validation:
+    x_val.append(feature)
+    y_val.append(label)
+
+# Normalize the data
+
+x_train = np.array(x_train)/255
+x_val = np.array(x_val) / 255
+
+x_train.reshape(-1, img_size,img_size,1)
+y_train
